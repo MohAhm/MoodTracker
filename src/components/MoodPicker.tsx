@@ -1,5 +1,12 @@
 import React, { useCallback, useState } from 'react';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  // useWindowDimensions,
+  View,
+} from 'react-native';
 import { theme } from '../theme';
 import { MoodOptionType } from '../types';
 
@@ -18,6 +25,7 @@ type MoodPickerProps = {
 const imageSource = require('../assets/butterflies.png');
 
 export const MoodPicker: React.FC<MoodPickerProps> = ({ handleSelectMood }) => {
+  // const dimensions = useWindowDimensions();
   const [selectedMode, setSelectedMode] = useState<MoodOptionType>();
   const [hasSelected, setHasSelected] = useState(false);
 
@@ -71,12 +79,14 @@ export const MoodPicker: React.FC<MoodPickerProps> = ({ handleSelectMood }) => {
 
 const styles = StyleSheet.create({
   container: {
+    height: 250,
     borderWidth: 2,
     borderColor: theme.colorPurple,
     margin: 10,
     borderRadius: 10,
     padding: 20,
     backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    justifyContent: 'space-between',
   },
   moodList: {
     flexDirection: 'row',
@@ -96,30 +106,28 @@ const styles = StyleSheet.create({
   },
   descriptionText: {
     color: theme.colorPurple,
-    fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 10,
+    fontFamily: theme.fontFamilyBold,
   },
   heading: {
     fontSize: 20,
-    fontWeight: 'bold',
     letterSpacing: 1,
     textAlign: 'center',
-    marginBottom: 20,
     color: theme.colorWhite,
+    fontFamily: theme.fontFamilyBold,
   },
   button: {
     backgroundColor: theme.colorPurple,
     width: 150,
     borderRadius: 20,
-    marginTop: 20,
     alignSelf: 'center',
     padding: 10,
   },
   buttonText: {
     color: theme.colorWhite,
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontFamily: theme.fontFamilyBold,
   },
   image: {
     alignSelf: 'center',
